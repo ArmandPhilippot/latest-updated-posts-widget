@@ -98,10 +98,14 @@ class LUP_Widget extends \WP_Widget {
 	 * @since 0.0.1
 	 */
 	public function lupwidget_enqueue_public_styles() {
-		wp_register_style( 'lupwidget', plugin_dir_url( __FILE__ ) . '/public/css/style.min.css', array(), LUPWIDGET_VERSION );
+		$styles_path = plugins_url( '/admin/css/style.min.css', _FILE_ );
 
-		wp_enqueue_style( 'lupwidget' );
-		wp_style_add_data( 'lupwidget', 'rtl', 'replace' );
+		if ( file_exists( $styles_path ) ) {
+			wp_register_style( 'lupwidget', $styles_path, array(), LUPWIDGET_VERSION );
+
+			wp_enqueue_style( 'lupwidget' );
+			wp_style_add_data( 'lupwidget', 'rtl', 'replace' );
+		}
 	}
 
 	/**
@@ -111,8 +115,12 @@ class LUP_Widget extends \WP_Widget {
 	 * @since 0.0.1
 	 */
 	public function lupwidget_enqueue_public_scripts() {
-		wp_register_script( 'lupwidget-scripts', plugin_dir_url( __FILE__ ) . '/public/js/scripts.min.js', array(), LUPWIDGET_VERSION, true );
-		wp_enqueue_script( 'lupwidget-scripts' );
+		$scripts_path = plugins_url( '/public/js/scripts.min.js', _FILE_ );
+
+		if ( file_exists( $scripts_path ) ) {
+			wp_register_script( 'lupwidget-scripts', $scripts_path, array(), LUPWIDGET_VERSION, true );
+			wp_enqueue_script( 'lupwidget-scripts' );
+		}
 	}
 
 	/**
@@ -122,10 +130,14 @@ class LUP_Widget extends \WP_Widget {
 	 * @since 0.0.1
 	 */
 	public function lupwidget_enqueue_admin_styles() {
-		wp_register_style( 'lupwidget', plugin_dir_url( __FILE__ ) . '/admin/css/style.min.css', array(), LUPWIDGET_VERSION );
+		$styles_path = plugins_url( '/admin/css/style.min.css', _FILE_ );
 
-		wp_enqueue_style( 'lupwidget' );
-		wp_style_add_data( 'lupwidget', 'rtl', 'replace' );
+		if ( file_exists( $styles_path ) ) {
+			wp_register_style( 'lupwidget', $styles_path, array(), LUPWIDGET_VERSION );
+
+			wp_enqueue_style( 'lupwidget' );
+			wp_style_add_data( 'lupwidget', 'rtl', 'replace' );
+		}
 	}
 
 	/**
@@ -135,8 +147,12 @@ class LUP_Widget extends \WP_Widget {
 	 * @since 0.0.1
 	 */
 	public function lupwidget_enqueue_admin_scripts() {
-		wp_register_script( 'lupwidget-scripts', plugin_dir_url( __FILE__ ) . '/admin/js/scripts.min.js', array(), LUPWIDGET_VERSION, true );
-		wp_enqueue_script( 'lupwidget-scripts' );
+		$scripts_path = plugins_url( '/admin/js/scripts.min.js', _FILE_ );
+
+		if ( file_exists( $scripts_path ) ) {
+			wp_register_script( 'lupwidget-scripts', $scripts_path, array(), LUPWIDGET_VERSION, true );
+			wp_enqueue_script( 'lupwidget-scripts' );
+		}
 	}
 
 	/**
@@ -148,15 +164,7 @@ class LUP_Widget extends \WP_Widget {
 	 * @param array $instance Settings for the current widget instance.
 	 */
 	public function widget( $args, $instance ) {
-		$default_title = __( 'Latest updated posts', 'LUPWidget' );
-		$title         = ! empty( $instance['title'] ) ? $instance['title'] : $default_title;
-		$title         = apply_filters( 'widget_title', $title, $instance, $this->id_base );
-
-		echo wp_kses_post( $args['before_widget'] );
-		if ( ! empty( $title ) ) {
-			echo wp_kses_post( $args['before_title'] ) . esc_html( $title ) . wp_kses_post( $args['after_title'] );
-		}
-		echo wp_kses_post( $args['after_widget'] );
+		include 'public/partials/lup-widget-public-display.php';
 	}
 
 	/**

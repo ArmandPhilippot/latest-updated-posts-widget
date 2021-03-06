@@ -107,6 +107,7 @@ function publicStyles() {
 				[autoprefixer()]
 			),
 			lec(),
+			rename('style.css'),
 			dest(config.styles.dest.public),
 			filter('**/*.css'),
 			rename({ suffix: '.min' }),
@@ -177,6 +178,7 @@ function adminStyles() {
 				[autoprefixer()]
 			),
 			lec(),
+			rename('style.css'),
 			dest(config.styles.dest.admin),
 			filter('**/*.css'),
 			rename({ suffix: '.min' }),
