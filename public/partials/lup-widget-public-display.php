@@ -108,7 +108,12 @@ if ( $lupwidget_recently_updated_posts->have_posts() ) {
 			}
 			if ( $lupwidget_excerpt ) {
 				?>
-					<div class="lup__excerpt"><?php the_excerpt(); ?></div>
+					<div class="lup__excerpt">
+						<?php
+						$lupwidget_content = wp_strip_all_tags( get_the_excerpt(), true );
+						echo esc_html( $lupwidget_content );
+						?>
+					</div>
 					<?php
 			}
 			?>
