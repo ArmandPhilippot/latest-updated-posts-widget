@@ -11,91 +11,95 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/armandphilippot/latest-updated-posts-widget/issues\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language: fr_FR\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: class-lup-widget.php:60
 msgid "Display a list of latest updated posts as a widget."
-msgstr ""
+msgstr "Affiche une liste des derniers articles mis à jour sous forme de widget."
 
 #: class-lup-widget.php:65
 msgid "Latest updated posts"
-msgstr ""
+msgstr "Derniers articles mis à jour"
 
 #: admin/partials/lup-widget-admin-display.php:34
 msgid "Title:"
-msgstr ""
+msgstr "Titre :"
 
 #: admin/partials/lup-widget-admin-display.php:42
 msgid "Number of posts to display:"
-msgstr ""
+msgstr "Nombre d'articles à afficher :"
 
 #: admin/partials/lup-widget-admin-display.php:55
 msgid "Ignore sticky posts"
-msgstr ""
+msgstr "Ignorer les articles épinglés (sticky posts)"
 
 #: admin/partials/lup-widget-admin-display.php:60
 msgid "Choose post types:"
-msgstr ""
+msgstr "Choisir les types d'articles :"
 
 #: admin/partials/lup-widget-admin-display.php:83
 msgid "Choose the information to display:"
-msgstr ""
+msgstr "Choisir les informations à afficher :"
 
 #: admin/partials/lup-widget-admin-display.php:91
 msgid "Categories"
-msgstr ""
+msgstr "Catégories"
 
 #: admin/partials/lup-widget-admin-display.php:101
 msgid "Tags"
-msgstr ""
+msgstr "Étiquettes"
 
 #: admin/partials/lup-widget-admin-display.php:111
 msgid "Author"
-msgstr ""
+msgstr "Auteur"
 
 #: admin/partials/lup-widget-admin-display.php:121
 msgid "Publication date"
-msgstr ""
+msgstr "Date de publication"
 
 #: admin/partials/lup-widget-admin-display.php:131
 msgid "Update date"
-msgstr ""
+msgstr "Date de mise à jour"
 
 #: admin/partials/lup-widget-admin-display.php:141
 msgid "Comments number"
-msgstr ""
+msgstr "Nombre de commentaires"
 
 #: admin/partials/lup-widget-admin-display.php:151
 msgid "Excerpt"
-msgstr ""
+msgstr "Extrait"
 
 #: public/partials/lup-widget-public-display.php:84
 msgid "Category:"
 msgid_plural "Categories:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Catégorie :"
+msgstr[1] "Catégories :"
 
 #: public/partials/lup-widget-public-display.php:108
 msgid "Tag:"
 msgid_plural "Tags:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Étiquette :"
+msgstr[1] "Étiquettes :"
 
 #: public/partials/lup-widget-public-display.php:128
 msgid "Author:"
-msgstr ""
+msgstr "Auteur :"
 
 #: public/partials/lup-widget-public-display.php:140
 msgid "Published on"
-msgstr ""
+msgstr "Publié le"
 
 #: public/partials/lup-widget-public-display.php:152
 msgid "Updated on"
-msgstr ""
+msgstr "Mis à jour le"
 
 #: public/partials/lup-widget-public-display.php:164
 msgid "Comments:"
-msgstr ""
+msgstr "Commentaires :"
