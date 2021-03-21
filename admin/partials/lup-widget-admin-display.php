@@ -46,6 +46,16 @@ $lupwidget_post_types_list = get_post_types( array( 'public' => true ) );
 		type="number" value="<?php echo esc_attr( $lupwidget_posts_number ); ?>" min="1" />
 </p>
 <p>
+	<input class="checkbox"
+		id="<?php echo esc_attr( $this->get_field_id( 'sticky_posts' ) ); ?>"
+		name="<?php echo esc_attr( $this->get_field_name( 'sticky_posts' ) ); ?>"
+		type="checkbox" <?php checked( $lupwidget_sticky_posts ); ?> />
+	<label
+		for="<?php echo esc_attr( $this->get_field_id( 'sticky_posts' ) ); ?>">
+		<?php echo esc_html__( 'Ignore sticky posts', 'LUPWidget' ); ?>
+	</label>
+</p>
+<p>
 	<fieldset class="lupwidget__fieldset">
 		<legend><?php esc_html_e( 'Choose post types:', 'LUPWidget' ); ?></legend>
 		<?php
@@ -69,82 +79,76 @@ $lupwidget_post_types_list = get_post_types( array( 'public' => true ) );
 	</fieldset>
 </p>
 <p>
-	<input class="checkbox"
-		id="<?php echo esc_attr( $this->get_field_id( 'categories' ) ); ?>"
-		name="<?php echo esc_attr( $this->get_field_name( 'categories' ) ); ?>"
-		type="checkbox" <?php checked( $lupwidget_categories ); ?> />
-	<label
-		for="<?php echo esc_attr( $this->get_field_id( 'categories' ) ); ?>">
-		<?php echo esc_html__( 'Display categories', 'LUPWidget' ); ?>
-	</label>
-</p>
-<p>
-	<input class="checkbox"
-		id="<?php echo esc_attr( $this->get_field_id( 'tags' ) ); ?>"
-		name="<?php echo esc_attr( $this->get_field_name( 'tags' ) ); ?>"
-		type="checkbox" <?php checked( $lupwidget_tags ); ?> />
-	<label
-		for="<?php echo esc_attr( $this->get_field_id( 'tags' ) ); ?>">
-		<?php echo esc_html__( 'Display tags', 'LUPWidget' ); ?>
-	</label>
-</p>
-<p>
-	<input class="checkbox"
-		id="<?php echo esc_attr( $this->get_field_id( 'author' ) ); ?>"
-		name="<?php echo esc_attr( $this->get_field_name( 'author' ) ); ?>"
-		type="checkbox" <?php checked( $lupwidget_author ); ?> />
-	<label
-		for="<?php echo esc_attr( $this->get_field_id( 'author' ) ); ?>">
-		<?php echo esc_html__( 'Display author', 'LUPWidget' ); ?>
-	</label>
-</p>
-<p>
-	<input class="checkbox"
-		id="<?php echo esc_attr( $this->get_field_id( 'publication_date' ) ); ?>"
-		name="<?php echo esc_attr( $this->get_field_name( 'publication_date' ) ); ?>"
-		type="checkbox" <?php checked( $lupwidget_publication_date ); ?> />
-	<label
-		for="<?php echo esc_attr( $this->get_field_id( 'publication_date' ) ); ?>">
-		<?php echo esc_html__( 'Display publication date', 'LUPWidget' ); ?>
-	</label>
-</p>
-<p>
-	<input class="checkbox"
-		id="<?php echo esc_attr( $this->get_field_id( 'update_date' ) ); ?>"
-		name="<?php echo esc_attr( $this->get_field_name( 'update_date' ) ); ?>"
-		type="checkbox" <?php checked( $lupwidget_update_date ); ?> />
-	<label
-		for="<?php echo esc_attr( $this->get_field_id( 'update_date' ) ); ?>">
-		<?php echo esc_html__( 'Display update date', 'LUPWidget' ); ?>
-	</label>
-</p>
-<p>
-	<input class="checkbox"
-		id="<?php echo esc_attr( $this->get_field_id( 'comments_number' ) ); ?>"
-		name="<?php echo esc_attr( $this->get_field_name( 'comments_number' ) ); ?>"
-		type="checkbox" <?php checked( $lupwidget_comments_number ); ?> />
-	<label
-		for="<?php echo esc_attr( $this->get_field_id( 'comments_number' ) ); ?>">
-		<?php echo esc_html__( 'Display comments number', 'LUPWidget' ); ?>
-	</label>
-</p>
-<p>
-	<input class="checkbox"
-		id="<?php echo esc_attr( $this->get_field_id( 'excerpt' ) ); ?>"
-		name="<?php echo esc_attr( $this->get_field_name( 'excerpt' ) ); ?>"
-		type="checkbox" <?php checked( $lupwidget_excerpt ); ?> />
-	<label
-		for="<?php echo esc_attr( $this->get_field_id( 'excerpt' ) ); ?>">
-		<?php echo esc_html__( 'Display excerpt', 'LUPWidget' ); ?>
-	</label>
-</p>
-<p>
-	<input class="checkbox"
-		id="<?php echo esc_attr( $this->get_field_id( 'sticky_posts' ) ); ?>"
-		name="<?php echo esc_attr( $this->get_field_name( 'sticky_posts' ) ); ?>"
-		type="checkbox" <?php checked( $lupwidget_sticky_posts ); ?> />
-	<label
-		for="<?php echo esc_attr( $this->get_field_id( 'sticky_posts' ) ); ?>">
-		<?php echo esc_html__( 'Ignore sticky posts', 'LUPWidget' ); ?>
-	</label>
+	<fieldset class="lupwidget__fieldset">
+		<legend><?php esc_html_e( 'Choose the information to display:', 'LUPWidget' ); ?></legend>
+		<label
+			for="<?php echo esc_attr( $this->get_field_id( 'categories' ) ); ?>">
+			<input class="checkbox"
+				id="<?php echo esc_attr( $this->get_field_id( 'categories' ) ); ?>"
+				name="<?php echo esc_attr( $this->get_field_name( 'categories' ) ); ?>"
+				type="checkbox" <?php checked( $lupwidget_categories ); ?>
+			/>
+			<?php echo esc_html__( 'Categories', 'LUPWidget' ); ?>
+		</label>
+		<br />
+		<label
+			for="<?php echo esc_attr( $this->get_field_id( 'tags' ) ); ?>">
+			<input class="checkbox"
+				id="<?php echo esc_attr( $this->get_field_id( 'tags' ) ); ?>"
+				name="<?php echo esc_attr( $this->get_field_name( 'tags' ) ); ?>"
+				type="checkbox" <?php checked( $lupwidget_tags ); ?>
+			/>
+			<?php echo esc_html__( 'Tags', 'LUPWidget' ); ?>
+		</label>
+		<br />
+		<label
+			for="<?php echo esc_attr( $this->get_field_id( 'author' ) ); ?>">
+			<input class="checkbox"
+				id="<?php echo esc_attr( $this->get_field_id( 'author' ) ); ?>"
+				name="<?php echo esc_attr( $this->get_field_name( 'author' ) ); ?>"
+				type="checkbox" <?php checked( $lupwidget_author ); ?>
+			/>
+			<?php echo esc_html__( 'Author', 'LUPWidget' ); ?>
+		</label>
+		<br />
+		<label
+			for="<?php echo esc_attr( $this->get_field_id( 'publication_date' ) ); ?>">
+			<input class="checkbox"
+				id="<?php echo esc_attr( $this->get_field_id( 'publication_date' ) ); ?>"
+				name="<?php echo esc_attr( $this->get_field_name( 'publication_date' ) ); ?>"
+				type="checkbox" <?php checked( $lupwidget_publication_date ); ?>
+			/>
+			<?php echo esc_html__( 'Publication date', 'LUPWidget' ); ?>
+		</label>
+		<br />
+		<label
+			for="<?php echo esc_attr( $this->get_field_id( 'update_date' ) ); ?>">
+			<input class="checkbox"
+				id="<?php echo esc_attr( $this->get_field_id( 'update_date' ) ); ?>"
+				name="<?php echo esc_attr( $this->get_field_name( 'update_date' ) ); ?>"
+				type="checkbox" <?php checked( $lupwidget_update_date ); ?>
+			/>
+			<?php echo esc_html__( 'Update date', 'LUPWidget' ); ?>
+		</label>
+		<br />
+		<label
+			for="<?php echo esc_attr( $this->get_field_id( 'comments_number' ) ); ?>">
+			<input class="checkbox"
+				id="<?php echo esc_attr( $this->get_field_id( 'comments_number' ) ); ?>"
+				name="<?php echo esc_attr( $this->get_field_name( 'comments_number' ) ); ?>"
+				type="checkbox" <?php checked( $lupwidget_comments_number ); ?>
+			/>
+			<?php echo esc_html__( 'Comments number', 'LUPWidget' ); ?>
+		</label>
+		<br />
+		<label
+			for="<?php echo esc_attr( $this->get_field_id( 'excerpt' ) ); ?>">
+			<input class="checkbox"
+				id="<?php echo esc_attr( $this->get_field_id( 'excerpt' ) ); ?>"
+				name="<?php echo esc_attr( $this->get_field_name( 'excerpt' ) ); ?>"
+				type="checkbox" <?php checked( $lupwidget_excerpt ); ?>
+			/>
+			<?php echo esc_html__( 'Excerpt', 'LUPWidget' ); ?>
+		</label>
+	</fieldset>
 </p>
