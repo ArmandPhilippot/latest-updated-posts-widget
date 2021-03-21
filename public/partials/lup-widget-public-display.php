@@ -14,9 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$lupwidget_default_title = __( 'Latest updated posts', 'LUPWidget' );
-$lupwidget_title         = ! empty( $instance['title'] ) ? $instance['title'] : $lupwidget_default_title;
-$lupwidget_title         = apply_filters( 'widget_title', $lupwidget_title, $instance, $this->id_base );
+$lupwidget_title = ! empty( $instance['title'] ) ? $instance['title'] : '';
+$lupwidget_title = apply_filters( 'widget_title', $lupwidget_title, $instance, $this->id_base );
 
 $lupwidget_posts_number     = ( ! empty( $instance['posts_number'] ) ) ? wp_strip_all_tags( $instance['posts_number'] ) : '';
 $lupwidget_categories       = ! empty( $instance['categories'] ) ? '1' : '0';
