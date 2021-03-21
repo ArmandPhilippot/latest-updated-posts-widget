@@ -45,7 +45,7 @@ foreach ( $lupwidget_post_types as $lupwidget_post_type_name => $lupwidget_post_
 $lupwidget_query_args += array( 'post_type' => $lupwidget_post_types_enabled );
 
 if ( $lupwidget_sticky_posts ) {
-	$lupwidget_query_args += array( 'ignore_sticky_posts' => false );
+	$lupwidget_query_args += array( 'ignore_sticky_posts' => true );
 }
 
 $lupwidget_recently_updated_posts = new \WP_Query( $lupwidget_query_args );
