@@ -92,13 +92,26 @@ class LUP_Widget extends \WP_Widget {
 	}
 
 	/**
+	 * Define the WHERE clause of the query to obtain only modified posts.
+	 *
+	 * @since 0.0.2
+	 *
+	 * @param string $where The WHERE clause of the query.
+	 * @return string The custom WHERE clause.
+	 */
+	public function lupwidget_modified_after_published( $where ) {
+			$where .= ' AND post_modified > post_date';
+			return $where;
+	}
+
+	/**
 	 * Register and enqueue styles needed by the public view of
 	 * LUP_Widget widget.
 	 *
 	 * @since 0.0.1
 	 */
 	public function lupwidget_enqueue_public_styles() {
-		$styles_path = plugins_url( '/admin/css/style.min.css', _FILE_ );
+		$styles_path = plugins_url( '/admin/css/style.min.css', __FILE__ );
 
 		if ( file_exists( $styles_path ) ) {
 			wp_register_style( 'lupwidget', $styles_path, array(), LUPWIDGET_VERSION );
@@ -115,7 +128,7 @@ class LUP_Widget extends \WP_Widget {
 	 * @since 0.0.1
 	 */
 	public function lupwidget_enqueue_public_scripts() {
-		$scripts_path = plugins_url( '/public/js/scripts.min.js', _FILE_ );
+		$scripts_path = plugins_url( '/public/js/scripts.min.js', __FILE__ );
 
 		if ( file_exists( $scripts_path ) ) {
 			wp_register_script( 'lupwidget-scripts', $scripts_path, array(), LUPWIDGET_VERSION, true );
@@ -130,7 +143,7 @@ class LUP_Widget extends \WP_Widget {
 	 * @since 0.0.1
 	 */
 	public function lupwidget_enqueue_admin_styles() {
-		$styles_path = plugins_url( '/admin/css/style.min.css', _FILE_ );
+		$styles_path = plugins_url( '/admin/css/style.min.css', __FILE__ );
 
 		if ( file_exists( $styles_path ) ) {
 			wp_register_style( 'lupwidget', $styles_path, array(), LUPWIDGET_VERSION );
@@ -147,7 +160,7 @@ class LUP_Widget extends \WP_Widget {
 	 * @since 0.0.1
 	 */
 	public function lupwidget_enqueue_admin_scripts() {
-		$scripts_path = plugins_url( '/admin/js/scripts.min.js', _FILE_ );
+		$scripts_path = plugins_url( '/admin/js/scripts.min.js', __FILE__ );
 
 		if ( file_exists( $scripts_path ) ) {
 			wp_register_script( 'lupwidget-scripts', $scripts_path, array(), LUPWIDGET_VERSION, true );
@@ -159,12 +172,15 @@ class LUP_Widget extends \WP_Widget {
 	 * Outputs the content for the current LUP_Widget widget instance.
 	 *
 	 * @since 0.0.1
+	 * @since 0.0.2 Add filter to the WHERE clause.
 	 *
 	 * @param array $args HTML to display the widget title class and widget content class.
 	 * @param array $instance Settings for the current widget instance.
 	 */
 	public function widget( $args, $instance ) {
+		add_filter( 'posts_where', array( $this, 'lupwidget_modified_after_published' ) );
 		include 'public/partials/lup-widget-public-display.php';
+		remove_filter( 'posts_where', array( $this, 'lupwidget_modified_after_published' ) );
 	}
 
 	/**
