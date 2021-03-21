@@ -77,6 +77,9 @@ class LUP_Widget extends \WP_Widget {
 			add_action( 'plugins_loaded', array( $this, 'lupwidget_load_plugin_textdomain' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'lupwidget_enqueue_public_styles' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'lupwidget_enqueue_public_scripts' ) );
+		}
+
+		if ( is_admin() ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'lupwidget_enqueue_admin_styles' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'lupwidget_enqueue_admin_scripts' ) );
 		}
@@ -111,10 +114,11 @@ class LUP_Widget extends \WP_Widget {
 	 * @since 0.0.1
 	 */
 	public function lupwidget_enqueue_public_styles() {
-		$styles_path = plugins_url( '/admin/css/style.min.css', __FILE__ );
+		$styles_url  = plugins_url( 'public/css/style.min.css', __FILE__ );
+		$styles_path = plugin_dir_path( __FILE__ ) . 'public/css/style.min.css';
 
 		if ( file_exists( $styles_path ) ) {
-			wp_register_style( 'lupwidget', $styles_path, array(), LUPWIDGET_VERSION );
+			wp_register_style( 'lupwidget', $styles_url, array(), LUPWIDGET_VERSION );
 
 			wp_enqueue_style( 'lupwidget' );
 			wp_style_add_data( 'lupwidget', 'rtl', 'replace' );
@@ -128,10 +132,11 @@ class LUP_Widget extends \WP_Widget {
 	 * @since 0.0.1
 	 */
 	public function lupwidget_enqueue_public_scripts() {
-		$scripts_path = plugins_url( '/public/js/scripts.min.js', __FILE__ );
+		$scripts_url  = plugins_url( 'public/js/scripts.min.js', __FILE__ );
+		$scripts_path = plugin_dir_path( __FILE__ ) . 'public/js/scripts.min.js';
 
 		if ( file_exists( $scripts_path ) ) {
-			wp_register_script( 'lupwidget-scripts', $scripts_path, array(), LUPWIDGET_VERSION, true );
+			wp_register_script( 'lupwidget-scripts', $scripts_url, array(), LUPWIDGET_VERSION, true );
 			wp_enqueue_script( 'lupwidget-scripts' );
 		}
 	}
@@ -141,12 +146,15 @@ class LUP_Widget extends \WP_Widget {
 	 * LUP_Widget widget.
 	 *
 	 * @since 0.0.1
+	 *
+	 * @param string $hook_suffix The current admin page.
 	 */
-	public function lupwidget_enqueue_admin_styles() {
-		$styles_path = plugins_url( '/admin/css/style.min.css', __FILE__ );
+	public function lupwidget_enqueue_admin_styles( $hook_suffix ) {
+		$styles_url  = plugins_url( 'admin/css/style.min.css', __FILE__ );
+		$styles_path = plugin_dir_path( __FILE__ ) . 'admin/css/style.min.css';
 
-		if ( file_exists( $styles_path ) ) {
-			wp_register_style( 'lupwidget', $styles_path, array(), LUPWIDGET_VERSION );
+		if ( file_exists( $styles_path ) && 'widgets.php' === $hook_suffix ) {
+			wp_register_style( 'lupwidget', $styles_url, array(), LUPWIDGET_VERSION );
 
 			wp_enqueue_style( 'lupwidget' );
 			wp_style_add_data( 'lupwidget', 'rtl', 'replace' );
@@ -158,12 +166,15 @@ class LUP_Widget extends \WP_Widget {
 	 * LUP_Widget widget.
 	 *
 	 * @since 0.0.1
+	 *
+	 * @param string $hook_suffix The current admin page.
 	 */
-	public function lupwidget_enqueue_admin_scripts() {
-		$scripts_path = plugins_url( '/admin/js/scripts.min.js', __FILE__ );
+	public function lupwidget_enqueue_admin_scripts( $hook_suffix ) {
+		$scripts_url  = plugins_url( 'admin/js/scripts.min.js', __FILE__ );
+		$scripts_path = plugin_dir_path( __FILE__ ) . 'admin/js/scripts.min.js';
 
-		if ( file_exists( $scripts_path ) ) {
-			wp_register_script( 'lupwidget-scripts', $scripts_path, array(), LUPWIDGET_VERSION, true );
+		if ( file_exists( $scripts_path && 'widgets.php' === $hook_suffix ) ) {
+			wp_register_script( 'lupwidget-scripts', $scripts_url, array(), LUPWIDGET_VERSION, true );
 			wp_enqueue_script( 'lupwidget-scripts' );
 		}
 	}
