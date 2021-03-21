@@ -1,0 +1,11 @@
+.lupwidget {
+	&__legend {
+		font-weight: 600;
+	}
+
+	&__label {
+		&--capitalize {
+			text-transform: capitalize;
+		}
+	}
+}

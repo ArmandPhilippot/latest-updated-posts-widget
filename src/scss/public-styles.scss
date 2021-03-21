@@ -8,3 +8,17 @@
 // Theme info
 //=============================================================================
 @import "base/widget_info";
+
+.lup {
+	&__item {
+		margin-bottom: 0.8em;
+	}
+
+	&__footer {
+		font-size: 0.8em;
+	}
+
+	&__term, &__description {
+		display: inline-block;
+	}
+}

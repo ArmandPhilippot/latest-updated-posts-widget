@@ -11,3 +11,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: LUPWidget
 Domain Path: /languages/
 */
+.lup__item {
+	margin-bottom: 0.8em;
+}
+
+.lup__footer {
+	font-size: 0.8em;
+}
+
+.lup__term, .lup__description {
+	display: inline-block;
+}

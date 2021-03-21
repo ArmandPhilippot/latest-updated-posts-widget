@@ -58,65 +58,133 @@ if ( ! empty( $lupwidget_title ) ) {
 
 if ( $lupwidget_recently_updated_posts->have_posts() ) {
 	?>
-	<ul class="widget__list lup__list">
+	<ul class="lup__list">
 	<?php
 	$lupwidget_i = 0;
 	while ( $lupwidget_recently_updated_posts->have_posts() && $lupwidget_i < $lupwidget_posts_number ) {
 		$lupwidget_recently_updated_posts->the_post();
 		?>
-		<li class="widget__item lup__item">
+		<li class="lup__item">
 			<article class="lup__post">
 				<header class="lup__header">
 					<a href="<?php the_permalink(); ?>" class="lup__title"><?php the_title(); ?></a>
 				</header>
-			<?php if ( $lupwidget_categories || $lupwidget_tags || $lupwidget_author || $lupwidget_publication_date || $lupwidget_update_date || $lupwidget_comments_number ) { ?>
+				<?php if ( $lupwidget_categories || $lupwidget_tags || $lupwidget_author || $lupwidget_publication_date || $lupwidget_update_date || $lupwidget_comments_number ) { ?>
 					<footer class="lup__footer">
-						<?php
-						if ( $lupwidget_categories ) {
-							?>
-							<span class="lup__categories"><?php the_category( ', ' ); ?></span>
+						<dl class="lup__list">
 							<?php
-						}
-						if ( $lupwidget_tags ) {
+							if ( $lupwidget_categories && has_category() ) {
+								$lupwidget_post_categories = get_the_category();
+								?>
+								<div class="lup__group lup__categories">
+									<dt class="lup__term">
+									<?php
+									printf(
+										esc_html(
+											_n(
+												'Category:',
+												'Categories:',
+												count( $lupwidget_post_categories ),
+												'LUPWidget'
+											)
+										)
+									);
+									?>
+									</dt>
+									<dd class="lup__description">
+										<?php the_category( ', ' ); ?>
+									</dd>
+								</div>
+								<?php
+							}
+							if ( $lupwidget_tags && has_tag() ) {
+								$lupwidget_post_tags = get_the_tags();
+								?>
+								<div class="lup__group lup__tags">
+									<dt class="lup__term">
+									<?php
+									printf(
+										esc_html(
+											_n(
+												'Tag:',
+												'Tags:',
+												count( $lupwidget_post_tags ),
+												'LUPWidget'
+											)
+										)
+									);
+									?>
+									</dt>
+									<dd class="lup__description">
+										<?php the_tags( '', ', ' ); ?>
+									</dd>
+								</div>
+								<?php
+							}
+							if ( $lupwidget_author ) {
+								?>
+								<div class="lup__group lup__author">
+									<dt class="lup__term">
+										<?php esc_html_e( 'Author:', 'LUPWidget' ); ?>
+									</dt>
+									<dd class="lup__description">
+										<?php the_author_posts_link(); ?>
+									</dd>
+								</div>
+								<?php
+							}
+							if ( $lupwidget_publication_date ) {
+								?>
+								<div class="lup__group lup__publication-date">
+									<dt class="lup__term">
+										<?php esc_html_e( 'Published on', 'LUPWidget' ); ?>
+									</dt>
+									<dd class="lup__description">
+										<?php the_date(); ?>
+									</dd>
+								</div>
+								<?php
+							}
+							if ( $lupwidget_update_date ) {
+								?>
+								<div class="lup__group lup__update-date">
+									<dt class="lup__term">
+										<?php esc_html_e( 'Updated on', 'LUPWidget' ); ?>
+									</dt>
+									<dd class="lup__description">
+										<?php the_modified_date(); ?>
+									</dd>
+								</div>
+								<?php
+							}
+							if ( $lupwidget_comments_number && comments_open() ) {
+								?>
+								<div class="lup__group lup__comments">
+									<dt class="lup__term">
+										<?php esc_html_e( 'Comments:', 'LUPWidget' ); ?>
+									</dt>
+									<dd class="lup__description">
+										<?php comments_popup_link(); ?>
+									</dd>
+								</div>
+								<?php
+							}
 							?>
-							<span class="lup__tags"><?php the_tags( '', ', ' ); ?></span>
-							<?php
-						}
-						if ( $lupwidget_author ) {
-							?>
-							<span class="lup__author"><?php the_author_posts_link(); ?></span>
-							<?php
-						}
-						if ( $lupwidget_publication_date ) {
-							?>
-							<span class="lup__date lup__date--published"><?php the_date(); ?></span>
-							<?php
-						}
-						if ( $lupwidget_update_date ) {
-							?>
-							<span class="lup__date lup__date--updated"><?php the_modified_date(); ?></span>
-							<?php
-						}
-						if ( $lupwidget_comments_number ) {
-							?>
-							<span class="lup__comments"><?php comments_popup_link(); ?></span>
-							<?php
-						}
-						?>
+						</dl>
 					</footer>
 					<?php
-			}
-			if ( $lupwidget_excerpt ) {
-				?>
-					<div class="lup__excerpt">
+				}
+				if ( $lupwidget_excerpt ) {
+					?>
+						<div class="lup__excerpt">
+							<?php
+							$lupwidget_content = wp_strip_all_tags( get_the_excerpt(), true );
+							echo esc_html( $lupwidget_content );
+							?>
+						</div>
 						<?php
-						$lupwidget_content = wp_strip_all_tags( get_the_excerpt(), true );
-						echo esc_html( $lupwidget_content );
-						?>
-					</div>
-					<?php
-			}
-			?>
+				}
+				?>
 			</article>
 		</li>
 		<?php
