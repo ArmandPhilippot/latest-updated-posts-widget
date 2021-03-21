@@ -18,6 +18,7 @@ $lupwidget_title = ! empty( $instance['title'] ) ? $instance['title'] : '';
 $lupwidget_title = apply_filters( 'widget_title', $lupwidget_title, $instance, $this->id_base );
 
 $lupwidget_posts_number     = ( ! empty( $instance['posts_number'] ) ) ? wp_strip_all_tags( $instance['posts_number'] ) : '';
+$lupwidget_post_types       = ( ! empty( $instance['post_types'] ) ) ? $instance['post_types'] : array( 'post' => 1 );
 $lupwidget_categories       = ! empty( $instance['categories'] ) ? '1' : '0';
 $lupwidget_tags             = ! empty( $instance['tags'] ) ? '1' : '0';
 $lupwidget_author           = ! empty( $instance['author'] ) ? '1' : '0';
@@ -29,10 +30,19 @@ $lupwidget_sticky_posts     = ! empty( $instance['sticky_posts'] ) ? '1' : '0';
 
 $lupwidget_query_args = array(
 	'query_label'      => 'lupwidget_query',
-	'post_type'        => 'post',
 	'orderby'          => 'modified',
 	'suppress_filters' => false,
 );
+
+$lupwidget_post_types_enabled = array();
+
+foreach ( $lupwidget_post_types as $lupwidget_post_type_name => $lupwidget_post_type_value ) {
+	if ( 1 === $lupwidget_post_type_value ) {
+		$lupwidget_post_types_enabled[] = $lupwidget_post_type_name;
+	}
+}
+
+$lupwidget_query_args += array( 'post_type' => $lupwidget_post_types_enabled );
 
 if ( $lupwidget_sticky_posts ) {
 	$lupwidget_query_args += array( 'ignore_sticky_posts' => false );
@@ -41,6 +51,7 @@ if ( $lupwidget_sticky_posts ) {
 $lupwidget_recently_updated_posts = new \WP_Query( $lupwidget_query_args );
 
 echo wp_kses_post( $args['before_widget'] );
+
 if ( ! empty( $lupwidget_title ) ) {
 	echo wp_kses_post( $args['before_title'] ) . esc_html( $lupwidget_title ) . wp_kses_post( $args['after_title'] );
 }

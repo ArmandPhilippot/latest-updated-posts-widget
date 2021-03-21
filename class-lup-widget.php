@@ -205,9 +205,16 @@ class LUP_Widget extends \WP_Widget {
 	 * @return array Updated settings to save.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance                     = $old_instance;
-		$instance['title']            = sanitize_text_field( $new_instance['title'] );
-		$instance['posts_number']     = ( ! empty( $new_instance['posts_number'] ) ) ? wp_strip_all_tags( $new_instance['posts_number'] ) : '';
+		$lupwidget_post_types_list = get_post_types( array( 'public' => true ) );
+
+		$instance                 = $old_instance;
+		$instance['title']        = sanitize_text_field( $new_instance['title'] );
+		$instance['posts_number'] = ( ! empty( $new_instance['posts_number'] ) ) ? wp_strip_all_tags( $new_instance['posts_number'] ) : '';
+
+		foreach ( $lupwidget_post_types_list as $lupwidget_post_type_name ) {
+			$instance['post_types'][ $lupwidget_post_type_name ] = ( ! empty( $new_instance['post_types'][ $lupwidget_post_type_name ] ) ) ? 1 : 0;
+		}
+
 		$instance['categories']       = ! empty( $new_instance['categories'] ) ? 1 : 0;
 		$instance['tags']             = ! empty( $new_instance['tags'] ) ? 1 : 0;
 		$instance['author']           = ! empty( $new_instance['author'] ) ? 1 : 0;
