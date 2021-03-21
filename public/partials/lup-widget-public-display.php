@@ -29,8 +29,10 @@ $lupwidget_excerpt          = ! empty( $instance['excerpt'] ) ? '1' : '0';
 $lupwidget_sticky_posts     = ! empty( $instance['sticky_posts'] ) ? '1' : '0';
 
 $lupwidget_query_args = array(
-	'post_type' => 'post',
-	'orderby'   => 'modified',
+	'query_label'      => 'lupwidget_query',
+	'post_type'        => 'post',
+	'orderby'          => 'modified',
+	'suppress_filters' => false,
 );
 
 if ( $lupwidget_sticky_posts ) {
@@ -48,7 +50,8 @@ if ( $lupwidget_recently_updated_posts->have_posts() ) {
 	?>
 	<ul class="widget__list lup__list">
 	<?php
-	for ( $lupwidget_i = 0; $lupwidget_i < $lupwidget_posts_number; $lupwidget_i++ ) {
+	$lupwidget_i = 0;
+	while ( $lupwidget_recently_updated_posts->have_posts() && $lupwidget_i < $lupwidget_posts_number ) {
 		$lupwidget_recently_updated_posts->the_post();
 		?>
 		<li class="widget__item lup__item">
@@ -56,7 +59,7 @@ if ( $lupwidget_recently_updated_posts->have_posts() ) {
 				<header class="lup__header">
 					<a href="<?php the_permalink(); ?>" class="lup__title"><?php the_title(); ?></a>
 				</header>
-				<?php if ( $lupwidget_categories || $lupwidget_tags || $lupwidget_author || $lupwidget_publication_date || $lupwidget_update_date || $lupwidget_comments_number ) { ?>
+			<?php if ( $lupwidget_categories || $lupwidget_tags || $lupwidget_author || $lupwidget_publication_date || $lupwidget_update_date || $lupwidget_comments_number ) { ?>
 					<footer class="lup__footer">
 						<?php
 						if ( $lupwidget_categories ) {
@@ -92,16 +95,19 @@ if ( $lupwidget_recently_updated_posts->have_posts() ) {
 						?>
 					</footer>
 					<?php
-				}
-				if ( $lupwidget_excerpt ) {
-					?>
+			}
+			if ( $lupwidget_excerpt ) {
+				?>
 					<div class="lup__excerpt"><?php the_excerpt(); ?></div>
 					<?php
-				}
-				?>
+			}
+			?>
 			</article>
 		</li>
-	<?php } ?>
+		<?php
+		$lupwidget_i++;
+	}
+	?>
 	</ul>
 	<?php
 }
