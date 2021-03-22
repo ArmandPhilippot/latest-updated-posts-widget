@@ -388,8 +388,8 @@ function bumpCSS(done) {
 	return pipeline(
 		[
 			src(config.bump.styles.src),
-			replace(/theme_version: "(.{5})"/g, function () {
-				return 'theme_version: "' + packageVersion + '"';
+			replace(/widget_version: "(.{5})"/g, function () {
+				return 'widget_version: "' + packageVersion + '"';
 			}),
 			dest(config.bump.styles.dest),
 		],
@@ -406,6 +406,9 @@ function bumpPHP(done) {
 	return pipeline(
 		[
 			src(config.bump.php.src),
+			replace(/Version:           (.{5})/g, function () {
+				return 'Version:           ' + packageVersion;
+			}),
 			replace(/_VERSION', '(.{5})'/g, function () {
 				return "_VERSION', '" + packageVersion + "'";
 			}),
@@ -424,8 +427,8 @@ function bumpTXT(done) {
 	return pipeline(
 		[
 			src(config.bump.txt.src),
-			replace(/Stable tag: ', '(.{5})'/g, function () {
-				return "Stable tag: ', '" + packageVersion + "'";
+			replace(/Stable tag: (.{5})/g, function () {
+				return 'Stable tag: ' + packageVersion;
 			}),
 			dest(config.bump.txt.dest),
 		],

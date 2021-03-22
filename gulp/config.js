@@ -205,6 +205,7 @@ module.exports = {
 			'!{src,src/**/*}',
 			'!{vendor,vendor/**/*}',
 			'!./**/*.map',
+			'!babel.config.json',
 			'!.commitlintrc.json',
 			'!.editorconfig',
 			'!.env',
