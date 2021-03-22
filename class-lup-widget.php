@@ -73,8 +73,9 @@ class LUP_Widget extends \WP_Widget {
 			}
 		);
 
+		add_action( 'plugins_loaded', array( $this, 'lupwidget_load_plugin_textdomain' ) );
+
 		if ( is_active_widget( false, false, $this->id_base ) ) {
-			add_action( 'plugins_loaded', array( $this, 'lupwidget_load_plugin_textdomain' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'lupwidget_enqueue_public_styles' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'lupwidget_enqueue_public_scripts' ) );
 		}
