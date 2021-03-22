@@ -104,7 +104,7 @@ class LUP_Widget extends \WP_Widget {
 	 * @return string The custom WHERE clause.
 	 */
 	public function lupwidget_modified_after_published( $where ) {
-			$where .= ' AND post_modified > post_date';
+			$where .= ' AND CAST(post_modified AS DATE) > CAST(post_date AS DATE)';
 			return $where;
 	}
 
