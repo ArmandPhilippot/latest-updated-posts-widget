@@ -1,6 +1,6 @@
 {
 	"name": "lup-widget",
-	"version": "1.0.0",
+	"version": "0.0.1",
 	"description": "Display a list of latest updated posts as a widget.",
 	"author": "Armand Philippot",
 	"license": "GPL-2.0-or-later",

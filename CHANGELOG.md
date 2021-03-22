@@ -2,20 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [1.0.0](https://github.com/armandphilippot/latest-updated-posts-widget/compare/v0.0.1...v1.0.0) (2021-03-22)
-
-
-### Bug Fixes
-
-* ignore sticky posts ([485eb1a](https://github.com/armandphilippot/latest-updated-posts-widget/commit/485eb1a762db561f0fa0fe95c51cac41ab176f30))
-* load textdomain even if widget not active ([69f4ced](https://github.com/armandphilippot/latest-updated-posts-widget/commit/69f4ced7d8cb1318aa9a4f4ef15e8a7ab117cdd6))
-* use correct path to check if styles/scripts exist ([68f3689](https://github.com/armandphilippot/latest-updated-posts-widget/commit/68f368941c42e7e4395e80d294fd3f6a57b9dc95))
-
-
-### Docs
-
-* complete the presentation and add some screenshots ([e4f6f5b](https://github.com/armandphilippot/latest-updated-posts-widget/commit/e4f6f5bf5f7357b0cf2ccf4ea86c4103cf8579fb))
-
 ### 0.0.1 (2021-03-06)
 
 
