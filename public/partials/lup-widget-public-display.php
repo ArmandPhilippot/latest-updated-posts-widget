@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $lupwidget_title = ! empty( $instance['title'] ) ? $instance['title'] : '';
 $lupwidget_title = apply_filters( 'widget_title', $lupwidget_title, $instance, $this->id_base );
 
-$lupwidget_posts_number     = ( ! empty( $instance['posts_number'] ) ) ? wp_strip_all_tags( $instance['posts_number'] ) : '';
+$lupwidget_posts_number     = ( ! empty( $instance['posts_number'] ) ) ? intval( wp_strip_all_tags( $instance['posts_number'] ) ) : '';
 $lupwidget_post_types       = ( ! empty( $instance['post_types'] ) ) ? $instance['post_types'] : array( 'post' => 1 );
 $lupwidget_categories       = ! empty( $instance['categories'] ) ? '1' : '0';
 $lupwidget_tags             = ! empty( $instance['tags'] ) ? '1' : '0';
@@ -48,6 +48,11 @@ if ( $lupwidget_sticky_posts ) {
 	$lupwidget_query_args += array( 'ignore_sticky_posts' => true );
 }
 
+if ( is_int( $lupwidget_posts_number ) ) {
+	$lupwidget_query_args += array( 'posts_per_page' => $lupwidget_posts_number );
+	$lupwidget_query_args += array( 'no_found_rows' => true );
+}
+
 $lupwidget_recently_updated_posts = new \WP_Query( $lupwidget_query_args );
 
 echo wp_kses_post( $args['before_widget'] );
@@ -60,8 +65,7 @@ if ( $lupwidget_recently_updated_posts->have_posts() ) {
 	?>
 	<ul class="lup__list">
 	<?php
-	$lupwidget_i = 0;
-	while ( $lupwidget_recently_updated_posts->have_posts() && $lupwidget_i < $lupwidget_posts_number ) {
+	while ( $lupwidget_recently_updated_posts->have_posts() ) {
 		$lupwidget_recently_updated_posts->the_post();
 		?>
 		<li class="lup__item">
@@ -188,7 +192,6 @@ if ( $lupwidget_recently_updated_posts->have_posts() ) {
 			</article>
 		</li>
 		<?php
-		$lupwidget_i++;
 	}
 	?>
 	</ul>
