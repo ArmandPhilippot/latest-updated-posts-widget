@@ -144,7 +144,7 @@ if ( $lupwidget_recently_updated_posts->have_posts() ) {
 										<?php esc_html_e( 'Published on', 'LUPWidget' ); ?>
 									</dt>
 									<dd class="lup__description">
-										<?php the_date(); ?>
+										<?php echo get_the_date(); ?>
 									</dd>
 								</div>
 								<?php
