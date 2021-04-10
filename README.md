@@ -56,4 +56,4 @@ You can download this plugin on Github, then extract it in `/wp-content/plugins/
 
 ## License
 
-This project is open source and available under the [GPL v2 or later License](https://github.com/ArmandPhilippot/latest-updated-posts/blob/master/LICENSE).
+This project is open source and available under the [GPL v2 or later License](https://github.com/ArmandPhilippot/latest-updated-posts-widget/blob/master/LICENSE).
