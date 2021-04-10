@@ -6,15 +6,16 @@ A WordPress Widget to display a list of the latest updated posts.
 
 ## Presentation
 
-This widget can be place in your sidebar to display the latest updated posts. Unlike the native "*Recent Posts*" widget that displays the recently published posts, this one lists the posts that have been recently modified.
+This widget can be place in your sidebar to display the latest updated posts. Unlike the native "_Recent Posts_" widget that displays the recently published posts, this one lists the posts that have been recently modified.
 
 The widget allows you to choose:
-* between the default post types and your custom post types
-* which data to display (dates, excerpt...)
 
-If you have sticky posts, you may want checked "*Ignore sticky post*" to prevent them to appear at the top of the list.
+-   between the default post types and your custom post types
+-   which data to display (dates, excerpt...)
 
-**By choice:** if a post is modified on the same day as its publication, it will not be displayed. 
+If you have sticky posts, you may want checked "_Ignore sticky post_" to prevent them to appear at the top of the list.
+
+**By choice:** if a post is modified on the same day as its publication, it will not be displayed.
 
 ## Installation
 
@@ -45,14 +46,14 @@ You can download this plugin on Github, then extract it in `/wp-content/plugins/
 
 ## Screenshots
 
-|Admin view - Common|Admin view - with Custom Post Types|
-|---|---|
-|![Admin view 1](assets/img/latest-updated-posts-admin.jpg)|![Admin view 2](assets/img/latest-updated-posts-admin2.jpg)|
+| Admin view - Common                                        | Admin view - with Custom Post Types                         |
+| ---------------------------------------------------------- | ----------------------------------------------------------- |
+| ![Admin view 1](assets/img/latest-updated-posts-admin.jpg) | ![Admin view 2](assets/img/latest-updated-posts-admin2.jpg) |
 
-|Public view - example 1|Public view - example 2|
-|---|---|
-|![Public view 1](assets/img/latest-updated-posts-public.jpg)|![Public view 2](assets/img/latest-updated-posts-public2.jpg)|
+| Public view - example 1                                      | Public view - example 2                                       |
+| ------------------------------------------------------------ | ------------------------------------------------------------- |
+| ![Public view 1](assets/img/latest-updated-posts-public.jpg) | ![Public view 2](assets/img/latest-updated-posts-public2.jpg) |
 
 ## License
 
-This project is open source and available under the [MIT License](https://github.com/ArmandPhilippot/latest-updated-posts/blob/master/LICENSE).
+This project is open source and available under the [GPL v2 or later License](https://github.com/ArmandPhilippot/latest-updated-posts/blob/master/LICENSE).
