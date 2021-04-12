@@ -68,7 +68,7 @@ $lupwidget_post_types_list = get_post_types( array( 'public' => true ) );
 					class="checkbox"
 					id="<?php echo esc_attr( $this->get_field_id( 'post_types' ) . '-' . $lupwidget_post_type_name ); ?>"
 					name="<?php echo esc_attr( $this->get_field_name( 'post_types' ) . '[' . $lupwidget_post_type_name . ']' ); ?>"
-					<?php checked( $lupwidget_post_types[ $lupwidget_post_type_name ] ); ?>
+					<?php array_key_exists($lupwidget_post_type_name, $lupwidget_post_types) ? checked( $lupwidget_post_types[ $lupwidget_post_type_name ] ) : null; ?>
 				/>
 				<?php echo esc_html( $lupwidget_post_type_name ); ?>
 			</label>
