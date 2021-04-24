@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/armandphilippot/latest-updated-posts-widget/compare/v1.0.2...v1.0.3) (2021-04-24)
+
+
+### Bug Fixes
+
+* display widget title only if there are updated posts ([375e11f](https://github.com/armandphilippot/latest-updated-posts-widget/commit/375e11fff42e830975e15dd6dc3abd708182667f))
+
 ### [1.0.2](https://github.com/armandphilippot/latest-updated-posts-widget/compare/v1.0.1...v1.0.2) (2021-04-10)
 
 
