@@ -57,11 +57,10 @@ $lupwidget_recently_updated_posts = new \WP_Query( $lupwidget_query_args );
 
 echo wp_kses_post( $args['before_widget'] );
 
-if ( ! empty( $lupwidget_title ) ) {
-	echo wp_kses_post( $args['before_title'] ) . esc_html( $lupwidget_title ) . wp_kses_post( $args['after_title'] );
-}
-
 if ( $lupwidget_recently_updated_posts->have_posts() ) {
+	if ( ! empty( $lupwidget_title ) ) {
+		echo wp_kses_post( $args['before_title'] ) . esc_html( $lupwidget_title ) . wp_kses_post( $args['after_title'] );
+	}
 	?>
 	<ul class="lup__list">
 	<?php

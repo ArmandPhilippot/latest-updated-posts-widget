@@ -72,30 +72,30 @@ msgstr ""
 msgid "Excerpt"
 msgstr ""
 
-#: public/partials/lup-widget-public-display.php:84
+#: public/partials/lup-widget-public-display.php:87
 msgid "Category:"
 msgid_plural "Categories:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: public/partials/lup-widget-public-display.php:108
+#: public/partials/lup-widget-public-display.php:111
 msgid "Tag:"
 msgid_plural "Tags:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: public/partials/lup-widget-public-display.php:128
+#: public/partials/lup-widget-public-display.php:131
 msgid "Author:"
 msgstr ""
 
-#: public/partials/lup-widget-public-display.php:140
+#: public/partials/lup-widget-public-display.php:143
 msgid "Published on"
 msgstr ""
 
-#: public/partials/lup-widget-public-display.php:152
+#: public/partials/lup-widget-public-display.php:155
 msgid "Updated on"
 msgstr ""
 
-#: public/partials/lup-widget-public-display.php:164
+#: public/partials/lup-widget-public-display.php:167
 msgid "Comments:"
 msgstr ""
