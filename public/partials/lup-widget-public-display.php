@@ -68,7 +68,7 @@ if ( $lupwidget_recently_updated_posts->have_posts() ) {
 		$lupwidget_recently_updated_posts->the_post();
 		?>
 		<li class="lup__item">
-			<article class="lup__post">
+			<div class="lup__post">
 				<header class="lup__header">
 					<a href="<?php the_permalink(); ?>" class="lup__title"><?php the_title(); ?></a>
 				</header>
@@ -188,7 +188,7 @@ if ( $lupwidget_recently_updated_posts->have_posts() ) {
 						<?php
 				}
 				?>
-			</article>
+			</div>
 		</li>
 		<?php
 	}
