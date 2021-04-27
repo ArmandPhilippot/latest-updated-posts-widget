@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/armandphilippot/latest-updated-posts-widget/compare/v1.0.3...v1.0.4) (2021-04-27)
+
+
+### Bug Fixes
+
+* replace article tag with div tag to display posts ([c7f69fb](https://github.com/armandphilippot/latest-updated-posts-widget/commit/c7f69fbc8a730781d51c065f2778f57c20dd304a))
+
 ### [1.0.3](https://github.com/armandphilippot/latest-updated-posts-widget/compare/v1.0.2...v1.0.3) (2021-04-24)
 
 

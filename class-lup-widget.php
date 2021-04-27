@@ -16,7 +16,7 @@
  * Plugin Name:       Latest updated posts
  * Plugin URI:        https://github.com/armandphilippot/latest-updated-posts-widget
  * Description:       Display a list of latest updated posts as a widget.
- * Version:           1.0.3
+ * Version:           1.0.4
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Armand Philippot
@@ -39,7 +39,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'LUPWIDGET_VERSION', '1.0.3' );
+define( 'LUPWIDGET_VERSION', '1.0.4' );
 
 /**
  * Class used to implement a LUP_Widget widget.
