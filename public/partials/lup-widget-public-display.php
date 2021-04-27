@@ -69,112 +69,108 @@ if ( $lupwidget_recently_updated_posts->have_posts() ) {
 		?>
 		<li class="lup__item">
 			<div class="lup__post">
-				<header class="lup__header">
-					<a href="<?php the_permalink(); ?>" class="lup__title"><?php the_title(); ?></a>
-				</header>
+				<a href="<?php the_permalink(); ?>" class="lup__title"><?php the_title(); ?></a>
 				<?php if ( $lupwidget_categories || $lupwidget_tags || $lupwidget_author || $lupwidget_publication_date || $lupwidget_update_date || $lupwidget_comments_number ) { ?>
-					<footer class="lup__footer">
-						<dl class="lup__list">
-							<?php
-							if ( $lupwidget_categories && has_category() ) {
-								$lupwidget_post_categories = get_the_category();
-								?>
-								<div class="lup__group lup__categories">
-									<dt class="lup__term">
-									<?php
-									printf(
-										esc_html(
-											_n(
-												'Category:',
-												'Categories:',
-												count( $lupwidget_post_categories ),
-												'LUPWidget'
-											)
-										)
-									);
-									?>
-									</dt>
-									<dd class="lup__description">
-										<?php the_category( ', ' ); ?>
-									</dd>
-								</div>
-								<?php
-							}
-							if ( $lupwidget_tags && has_tag() ) {
-								$lupwidget_post_tags = get_the_tags();
-								?>
-								<div class="lup__group lup__tags">
-									<dt class="lup__term">
-									<?php
-									printf(
-										esc_html(
-											_n(
-												'Tag:',
-												'Tags:',
-												count( $lupwidget_post_tags ),
-												'LUPWidget'
-											)
-										)
-									);
-									?>
-									</dt>
-									<dd class="lup__description">
-										<?php the_tags( '', ', ' ); ?>
-									</dd>
-								</div>
-								<?php
-							}
-							if ( $lupwidget_author ) {
-								?>
-								<div class="lup__group lup__author">
-									<dt class="lup__term">
-										<?php esc_html_e( 'Author:', 'LUPWidget' ); ?>
-									</dt>
-									<dd class="lup__description">
-										<?php the_author_posts_link(); ?>
-									</dd>
-								</div>
-								<?php
-							}
-							if ( $lupwidget_publication_date ) {
-								?>
-								<div class="lup__group lup__publication-date">
-									<dt class="lup__term">
-										<?php esc_html_e( 'Published on', 'LUPWidget' ); ?>
-									</dt>
-									<dd class="lup__description">
-										<?php echo get_the_date(); ?>
-									</dd>
-								</div>
-								<?php
-							}
-							if ( $lupwidget_update_date ) {
-								?>
-								<div class="lup__group lup__update-date">
-									<dt class="lup__term">
-										<?php esc_html_e( 'Updated on', 'LUPWidget' ); ?>
-									</dt>
-									<dd class="lup__description">
-										<?php the_modified_date(); ?>
-									</dd>
-								</div>
-								<?php
-							}
-							if ( $lupwidget_comments_number && comments_open() ) {
-								?>
-								<div class="lup__group lup__comments">
-									<dt class="lup__term">
-										<?php esc_html_e( 'Comments:', 'LUPWidget' ); ?>
-									</dt>
-									<dd class="lup__description">
-										<?php comments_popup_link(); ?>
-									</dd>
-								</div>
-								<?php
-							}
+					<dl class="lup__footer">
+						<?php
+						if ( $lupwidget_categories && has_category() ) {
+							$lupwidget_post_categories = get_the_category();
 							?>
-						</dl>
-					</footer>
+							<div class="lup__group lup__categories">
+								<dt class="lup__term">
+								<?php
+								printf(
+									esc_html(
+										_n(
+											'Category:',
+											'Categories:',
+											count( $lupwidget_post_categories ),
+											'LUPWidget'
+										)
+									)
+								);
+								?>
+								</dt>
+								<dd class="lup__description">
+									<?php the_category( ', ' ); ?>
+								</dd>
+							</div>
+							<?php
+						}
+						if ( $lupwidget_tags && has_tag() ) {
+							$lupwidget_post_tags = get_the_tags();
+							?>
+							<div class="lup__group lup__tags">
+								<dt class="lup__term">
+								<?php
+								printf(
+									esc_html(
+										_n(
+											'Tag:',
+											'Tags:',
+											count( $lupwidget_post_tags ),
+											'LUPWidget'
+										)
+									)
+								);
+								?>
+								</dt>
+								<dd class="lup__description">
+									<?php the_tags( '', ', ' ); ?>
+								</dd>
+							</div>
+							<?php
+						}
+						if ( $lupwidget_author ) {
+							?>
+							<div class="lup__group lup__author">
+								<dt class="lup__term">
+									<?php esc_html_e( 'Author:', 'LUPWidget' ); ?>
+								</dt>
+								<dd class="lup__description">
+									<?php the_author_posts_link(); ?>
+								</dd>
+							</div>
+							<?php
+						}
+						if ( $lupwidget_publication_date ) {
+							?>
+							<div class="lup__group lup__publication-date">
+								<dt class="lup__term">
+									<?php esc_html_e( 'Published on', 'LUPWidget' ); ?>
+								</dt>
+								<dd class="lup__description">
+									<?php echo get_the_date(); ?>
+								</dd>
+							</div>
+							<?php
+						}
+						if ( $lupwidget_update_date ) {
+							?>
+							<div class="lup__group lup__update-date">
+								<dt class="lup__term">
+									<?php esc_html_e( 'Updated on', 'LUPWidget' ); ?>
+								</dt>
+								<dd class="lup__description">
+									<?php the_modified_date(); ?>
+								</dd>
+							</div>
+							<?php
+						}
+						if ( $lupwidget_comments_number && comments_open() ) {
+							?>
+							<div class="lup__group lup__comments">
+								<dt class="lup__term">
+									<?php esc_html_e( 'Comments:', 'LUPWidget' ); ?>
+								</dt>
+								<dd class="lup__description">
+									<?php comments_popup_link(); ?>
+								</dd>
+							</div>
+							<?php
+						}
+						?>
+					</dl>
 					<?php
 				}
 				if ( $lupwidget_excerpt ) {
